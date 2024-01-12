@@ -30,9 +30,42 @@ const nintendo = {
 };
 
 function transformaPreco(produto: { nome: string; preco: string }) {
-  produto.preco = 'R$' + produto.preco;
+  produto.preco = "R$" + produto.preco;
   return produto;
 }
 
-const produtoNovo= transformaPreco(nintendo);
+const produtoNovo = transformaPreco(nintendo);
 console.log(produtoNovo);
+
+function normalizarTexto(texto: string) {
+  return texto.trim().toLowerCase();
+}
+console.log(normalizarTexto("teste")); //teste
+
+const input = document.querySelector("input");
+
+const total = localStorage.getItem("total");
+
+if (input && total) {
+  input.value = total;
+  calcularGanho(Number(input.value));
+}
+
+function calcularGanho(value: number) {
+  const p = document.querySelector("p");
+  if (p) {
+    p.innerText = `ganho total: ${value + 100 - value * 0.2}`;
+  }
+}
+
+function totalMudou() {
+  if (input) {
+    const value = Number(input.value);
+    localStorage.setItem("total", input.value);
+    calcularGanho(Number(input.value));
+  }
+}
+if(input){
+  input.addEventListener("keyup", totalMudou);
+
+}
