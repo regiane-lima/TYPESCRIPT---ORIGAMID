@@ -1,6 +1,6 @@
 "use strict";
-const frase = 'Front End';
+const frase = 'true';
 const valor = 500;
-const condi = preco > 100;
+const condi = valor > 100;
 console.log(typeof frase);
 console.log(typeof valor);

@@ -1,0 +1,54 @@
+"use strict";
+//Annotation e Inference
+function soma(a, b) {
+    return a + b;
+}
+console.log(somar(10, 30));
+var produto = "Livro";
+var preco = 100;
+var carro = {
+    marca: "Audi",
+    portas: 5,
+};
+var barato = preco < 400 ? true : "produto caro";
+//Funções
+function somar(a, b) {
+    return a + b;
+}
+console.log(somar(20, 20));
+var nintendo = {
+    nome: "nintendo",
+    preco: "5000", //eu quero uma função que transforme isso em real
+};
+function transformaPreco(produto) {
+    produto.preco = "R$" + produto.preco;
+    return produto;
+}
+var produtoNovo = transformaPreco(nintendo);
+console.log(produtoNovo);
+function normalizarTexto(texto) {
+    return texto.trim().toLowerCase();
+}
+console.log(normalizarTexto("teste")); //teste
+var input = document.querySelector("input");
+var total = localStorage.getItem("total");
+if (input && total) {
+    input.value = total;
+    calcularGanho(Number(input.value));
+}
+function calcularGanho(value) {
+    var p = document.querySelector("p");
+    if (p) {
+        p.innerText = "ganho total: ".concat(value + 100 - value * 0.2);
+    }
+}
+function totalMudou() {
+    if (input) {
+        var value = Number(input.value);
+        localStorage.setItem("total", input.value);
+        calcularGanho(Number(input.value));
+    }
+}
+if (input) {
+    input.addEventListener("keyup", totalMudou);
+}
